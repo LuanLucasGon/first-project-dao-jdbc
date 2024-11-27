@@ -14,9 +14,19 @@ public class Program2 {
         Scanner scanner = new Scanner(System.in);
         DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 
+        System.out.println("=== TEST 1: seller findById ===");
+        Department department = departmentDao.findById(3);
+        System.out.println(department);
+
         System.out.println("\n=== TEST 4: seller insert ===");
-        Department department = new Department(null, "Phones");
+        department = new Department(null, "Phones");
         departmentDao.insert(department);
         System.out.println("Inserted! New seller id = "+department.getId());
+
+        System.out.println("\n=== TEST 5: seller update ===");
+        department = departmentDao.findById(1);
+        department.setName("Planes");
+        departmentDao.update(department);
+        System.out.println("Update completed!");
     }
 }
