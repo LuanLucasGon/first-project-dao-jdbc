@@ -14,19 +14,27 @@ public class Program2 {
         Scanner scanner = new Scanner(System.in);
         DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 
-        System.out.println("=== TEST 1: seller findById ===");
+        System.out.println("=== TEST 1: department findById ===");
         Department department = departmentDao.findById(3);
         System.out.println(department);
 
-        System.out.println("\n=== TEST 4: seller insert ===");
+        System.out.println("\n=== TEST 4: department insert ===");
         department = new Department(null, "Phones");
         departmentDao.insert(department);
-        System.out.println("Inserted! New seller id = "+department.getId());
+        System.out.println("Inserted! New Department id = "+department.getId());
 
-        System.out.println("\n=== TEST 5: seller update ===");
+        System.out.println("\n=== TEST 5: department update ===");
         department = departmentDao.findById(1);
         department.setName("Planes");
         departmentDao.update(department);
         System.out.println("Update completed!");
+
+        System.out.println("\n=== TEST 6: department delete ===");
+        System.out.println("Enter id for delete test: ");
+        int id = scanner.nextInt();
+        departmentDao.deleteById(id);
+        System.out.println("Delete completed!");
+
+        scanner.close();
     }
 }
